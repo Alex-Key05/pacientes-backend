@@ -1,12 +1,11 @@
-const express = require ('express');
-const mongoose = require ('mongoose');
-const routes = require('./routes'); // No hace falta poner 'index', js lo busca
+const express = require('express');
+const mongoose = require('mongoose');
+const routes = require('./routes');
 const bodyParser = require('body-parser');
 
-// Crear servidor
 const app = express();
 
-// Conectar a mongoDB
+// Conectar a mongo
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/veterinaria', {
     useNewUrlParser: true,
@@ -14,16 +13,14 @@ mongoose.connect('mongodb://localhost/veterinaria', {
     useFindAndModify: false,
 });
 
-// Habilitar el body-parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extend: true}));
+app.use(bodyParser.urlencoded({ extend: true }));
 
-
-// Habilitar routing
+// Habilitar el routing
 app.use('/', routes());
 
 const port = process.env.PORT || 4000;
 
 app.listen(port, (req, res) => {
-    console.log(`El servidor está corriendo en el puerto ${port}`);
+    console.log(`Servidor funcionando en el puerto ${port}`);
 });
