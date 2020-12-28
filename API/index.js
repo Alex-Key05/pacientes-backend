@@ -1,6 +1,7 @@
 const express = require ('express');
 const mongoose = require ('mongoose');
 const routes = require('./routes'); // No hace falta poner 'index', js lo busca
+const bodyParser = require('body-parser');
 
 // Crear servidor
 const app = express();
@@ -12,6 +13,11 @@ mongoose.connect('mongodb://localhost/veterinaria', {
     useUnifiedTopology: true,
     useFindAndModify: false,
 });
+
+// Habilitar el body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extend: true}));
+
 
 // Habilitar routing
 app.use('/', routes());

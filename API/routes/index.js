@@ -1,5 +1,5 @@
 const express = require ('express');
-const pacienteControllers = require ('../controllers/pacienteControllers.js');
+const pacienteController = require ('../controllers/pacienteControllers.js');
 
 const router = express.Router();
 
@@ -8,7 +8,7 @@ module.exports = function() {
 
     // Agrega nuevos pacientes vía POST
     router.post('/pacientes', 
-        pacienteControllers.nuevoCliente
+        pacienteController.nuevoCliente
     )
 
     return router;
