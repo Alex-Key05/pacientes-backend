@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import clienteAxios from '../config/axios';
 
@@ -28,12 +28,12 @@ const NuevaCita = (props) => {
         // Enviar la petición por axios
         clienteAxios.post('/pacientes', cita)
             .then(respuesta => {
-                console.log(respuesta);
+                // console.log(respuesta);
+                props.guardarConsultar(true)
                 // Redireccionar
                 props.history.push('/');
             });
         console.log('Has pasado la validación')
-
     }
 
   return (
@@ -144,4 +144,4 @@ const NuevaCita = (props) => {
   );
 };
 
-export default NuevaCita;
+export default withRouter(NuevaCita);

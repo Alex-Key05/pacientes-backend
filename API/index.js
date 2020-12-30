@@ -33,7 +33,7 @@ mongoose.connect('mongodb://localhost/veterinaria', {
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extend: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Habilitar el routing
 app.use('/', routes());
