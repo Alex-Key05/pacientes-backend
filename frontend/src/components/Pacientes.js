@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const Pacientes = ({ citas }) => {
-  if (citas.length === 0) return null;
 
   return (
     <>
@@ -21,8 +20,9 @@ const Pacientes = ({ citas }) => {
           <div className="col-md-8 mx-auto">
             <div className="list-group">
               {citas.map((cita) => (
-                <a
+                <Link
                   key={cita._id}
+                  to={`/cita/${cita._id}`}
                   className="p-5 list-group-item list-group-item-action flex-column align-items-start"
                 >
                   <div className="d-flex w-100 justify-content-between mb-4">
@@ -39,7 +39,7 @@ const Pacientes = ({ citas }) => {
                         <p>Dueño: {cita.propietario}</p>
                         <p>Teléfono: {cita.telefono}</p>
                     </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

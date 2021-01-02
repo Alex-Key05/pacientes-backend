@@ -33,7 +33,6 @@ const NuevaCita = (props) => {
                 // Redireccionar
                 props.history.push('/');
             });
-        console.log('Has pasado la validación')
     }
 
   return (
